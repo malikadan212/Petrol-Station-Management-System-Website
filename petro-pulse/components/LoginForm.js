@@ -98,7 +98,7 @@ const handleSubmit = (e) => {
 
             {/* Sign Up Prompt */}
             <p className="mt-6 text-center text-gray-300">
-              Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
               <a href="#" className="text-blue-400 hover:underline">
                 Sign Up
               </a>
