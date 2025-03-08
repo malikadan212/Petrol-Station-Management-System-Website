@@ -67,7 +67,7 @@ export default function LoginForm({ onSwitch }) {
 
           {/* Social Sign-In */}
           <div className="mt-6 text-center">
-            <p className="text-gray-200">or sign in with</p>
+            <p className="text-gray-200">or sign in with </p>
             <div className="flex justify-center space-x-4 mt-3 text-xl">
               <a href="#" className="text-white hover:text-blue-400"><i className="fab fa-facebook-f"></i></a>
               <a href="#" className="text-white hover:text-blue-400"><i className="fab fa-twitter"></i></a>
