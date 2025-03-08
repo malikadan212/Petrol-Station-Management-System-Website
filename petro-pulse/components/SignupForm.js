@@ -3,17 +3,29 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export default function LoginForm({ onSwitch }) {
+export default function SignupForm({ onSwitch }) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
+
+    if (!name || !email || !password || !confirmPassword) {
       setError(true);
       setTimeout(() => setError(false), 800);
+      return;
     }
+
+    if (password !== confirmPassword) {
+      setError(true);
+      setTimeout(() => setError(false), 800);
+      return;
+    }
+
+    onSwitch();
   };
 
   return (
@@ -24,10 +36,21 @@ export default function LoginForm({ onSwitch }) {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="w-full max-w-md bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl p-8 text-white"
       >
-        <h2 className="text-3xl font-bold mb-2">Welcome to Petro-Pulse</h2>
-        <p className="text-gray-200 mb-8">Sign in to your account to continue</p>
+        <h2 className="text-3xl font-bold mb-2">Create an Account</h2>
+        <p className="text-gray-200 mb-8">Sign up to get started</p>
 
         <form onSubmit={handleSubmit} className={`space-y-6 transition-all ${error ? "animate-glitch" : ""}`}>
+          <div>
+            <label className="block mb-1 text-sm text-gray-200">Full Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="bg-transparent text-white placeholder-gray-300 border-b border-gray-300 focus:outline-none w-full"
+            />
+          </div>
+
           <div>
             <label className="block mb-1 text-sm text-gray-200">Email</label>
             <input
@@ -49,46 +72,26 @@ export default function LoginForm({ onSwitch }) {
               className="bg-transparent text-white placeholder-gray-300 border-b border-gray-300 focus:outline-none w-full"
             />
           </div>
+        
+          <div>
+            <label className="block mb-1 text-sm text-gray-200">Confirm Password</label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              className="bg-transparent text-white placeholder-gray-300 border-b border-gray-300 focus:outline-none w-full"
+            />
+          </div>
 
           <button type="submit" className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md transition mb-4 text-xl">
-            Sign In
+            Sign Up
           </button>
-          
 
-            {/* Remember Me & Forgot Password */}
-            <div className="flex justify-between items-center text-sm text-gray-300">
-              <div className="flex items-center space-x-2">
-                <input type="checkbox" className="mr-2" />
-                <span>Remember me</span>
-              </div>
-              <a href="#" className="hover:underline text-blue-400">
-                Forgot password?
-              </a>
-            </div>
-
-            {/* Social Sign-In */}
-            <div className="mt-6 text-center">
-              <p className="text-gray-200">or sign in with</p>
-              <div className="flex justify-center space-x-4 mt-3">
-                <a href="#" className="text-white hover:text-blue-400">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" className="text-white hover:text-blue-400">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#" className="text-white hover:text-blue-400">
-                  <i className="fab fa-google"></i>
-                </a>
-                <a href="#" className="text-white hover:text-blue-400">
-                  <i className="fab fa-github"></i>
-                </a>
-              </div>
-            </div>
-            
           <p className="mt-6 text-center text-gray-300">
-            Don&apos;t have an account?{" "}
+            Already have an account?{" "}
             <button onClick={onSwitch} className="text-blue-400 hover:underline">
-              Sign Up
+              Sign In
             </button>
           </p>
         </form>

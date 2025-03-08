@@ -1,5 +1,6 @@
 "use client";
-import LoginForm from "@/components/LoginForm";
+import AuthForm from "@/components/AuthForm";
+
 export default function Home() {
   return (
     <div className="relative w-full h-screen">
@@ -11,7 +12,7 @@ export default function Home() {
       <div className="fixed inset-0 bg-black/50" />
 
       <div className="absolute inset-0 flex justify-end items-center p-24">
-        <LoginForm />
+        <AuthForm /> 
       </div>
     </div>
   );
