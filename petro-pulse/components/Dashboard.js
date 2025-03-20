@@ -39,7 +39,7 @@ const Dashboard = ({ adminData }) => {
 
         {/* Today's Sales */}
         <Card className="p-4">
-          <p className="text-gray-600 text-sm font-medium">Today's Sales</p>
+          <p className="text-gray-600 text-sm font-medium">Today&apos;s Sales</p>
           <div className="flex items-end justify-between">
             <h2 className="text-3xl font-bold text-indigo-900 mt-1">Rs. {adminData.todaySales.toLocaleString()}</h2>
             <div className="w-24 h-12 relative">
@@ -62,7 +62,7 @@ const Dashboard = ({ adminData }) => {
 
         {/* Today's Expenses */}
         <Card className="p-4">
-          <p className="text-gray-600 text-sm font-medium">Today's Expenses</p>
+          <p className="text-gray-600 text-sm font-medium">Today&apos;s Expenses</p>
           <div className="flex items-end justify-between">
             <h2 className="text-3xl font-bold text-indigo-900 mt-1">Rs. {adminData.todayExpenses.toLocaleString()}</h2>
             <div className="w-24 h-12 relative">
